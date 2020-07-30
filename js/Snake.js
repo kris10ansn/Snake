@@ -128,7 +128,8 @@ export class Snake {
 		});
 	}
 
-	draw() {
+	/** @param {CanvasRenderingContext2D} ctx */
+	draw(ctx) {
 		this.body.forEach(it => {
 			// Fills rect on each bodypart's position
 			ctx.fillStyle = this.color;

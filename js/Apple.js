@@ -20,7 +20,8 @@ export class Apple {
 		else this.p = scl / 2;
 	}
 
-	draw() {
+	/** @param {CanvasRenderingContext2D} ctx */
+	draw(ctx) {
 		ctx.fillStyle = this.color;
 		ctx.fillRect(
 			this.x + this.p,

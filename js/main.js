@@ -13,14 +13,17 @@ let storage;
 let highscore;
 let score = 0;
 
+/** @type {CanvasRenderingContext2D} ctx */
+let ctx;
+
 window.tileCount = 11;
 
 window.speed = 7;
 let pause = false;
 
 function init() {
-	window.canvas = document.querySelector("#canvas");
-	window.ctx = canvas.getContext("2d");
+	let canvas = document.querySelector("#canvas");
+	ctx = canvas.getContext("2d");
 
 	storage = new StorageHandler();
 
@@ -48,10 +51,10 @@ function loop() {
 	ctx.fillStyle = "black";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	apple.draw();
+	apple.draw(ctx);
 
 	snake.update();
-	snake.draw();
+	snake.draw(ctx);
 
 	drawText();
 
@@ -83,7 +86,7 @@ function drawText() {
 	ctx.fillText(
 		"High score: " + highscore,
 		canvas.width / 2 -
-			ctx.measureText("High score: " + highscore).width / 2,
+		ctx.measureText("High score: " + highscore).width / 2,
 		scl * 3.5
 	);
 }
